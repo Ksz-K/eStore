@@ -1,7 +1,7 @@
 import React from "react";
 import Cart from "../features/cart";
 
-const Homepage = props => {
+const CartPage = props => {
   return (
     <div>
       <h1>MyCart</h1>
@@ -10,4 +10,4 @@ const Homepage = props => {
   );
 };
 
-export default Homepage;
+export default CartPage;
