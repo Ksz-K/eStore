@@ -1,27 +1,40 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Router from "./Router";
+import { connect } from "react-redux";
 
-const Navigation = props => (
+const Navigation = ({ cart }) => (
   <nav>
-    <ul>
+    <ul className="top-menu">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/cart">Cart</NavLink>
+        <NavLink to="/cart">
+          Cart (
+          {cart.reduce((acc, item) => {
+            return acc + item.quantity;
+          }, 0)}
+          )
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/checkout">Check out</NavLink>
       </li>
     </ul>
   </nav>
 );
 
-function App() {
+const App = ({ cart }) => {
   return (
     <div className="page-container">
-      <Navigation />
+      <Navigation cart={cart} />
       <Router />
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => ({
+  cart: state.cart
+});
+export default withRouter(connect(mapStateToProps)(App));
