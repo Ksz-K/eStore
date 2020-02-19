@@ -1,9 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
-function CheckoutForm(props) {
-  const { handleSubmit } = props;
-
+const CheckoutForm = ({ handleSubmit }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -23,8 +21,6 @@ function CheckoutForm(props) {
       </form>
     </div>
   );
-}
+};
 
-CheckoutForm = reduxForm({ form: "checkout" })(CheckoutForm);
-
-export default CheckoutForm;
+export default reduxForm({ form: "checkout" })(CheckoutForm);

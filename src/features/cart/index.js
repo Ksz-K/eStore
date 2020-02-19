@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-function Cart(props) {
+const Cart = props => {
   return (
     <table>
       <thead>
@@ -33,15 +33,13 @@ function Cart(props) {
       </tbody>
     </table>
   );
-}
+};
 
-function mapStateToProps(state) {
-  return {
-    cart: state.cart
-  };
-}
+const mapStateToProps = state => ({
+  cart: state.cart
+});
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     addToCart: item => {
       dispatch({ type: "ADD", payload: item });
@@ -53,6 +51,6 @@ function mapDispatchToProps(dispatch) {
       dispatch({ type: "REMOVE_ALL", payload: item });
     }
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -4,16 +4,16 @@ import cartReducer from "../features/cart/reducer";
 import productsReducer from "../features/product-listing/reducer";
 import { reducer as formReducer } from "redux-form";
 
-function saveToLocalStorage(state) {
+const saveToLocalStorage = state => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-function loadFromLocalStorage() {
+const loadFromLocalStorage = () => {
   try {
     const serializedState = localStorage.getItem("state");
     if (serializedState === null) return undefined;
@@ -22,7 +22,7 @@ function loadFromLocalStorage() {
     console.log(err);
     return undefined;
   }
-}
+};
 
 const recentVisitState = loadFromLocalStorage();
 

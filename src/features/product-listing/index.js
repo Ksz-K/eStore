@@ -7,9 +7,7 @@ class ProductListing extends React.Component {
   async componentDidMount() {
     try {
       const { loadProducts } = this.props;
-      const res = await axios.get(
-        "https://kszk-api.herokuapp.com/api/products"
-      );
+      const res = await axios.get("https://kszk-api.herokuapp.com/api/estore");
       loadProducts(res.data);
     } catch (err) {
       console.log(err);

@@ -9,7 +9,7 @@ const ProductListItem = props => {
       <img
         height={100}
         title={props.product.name}
-        src={`products/${props.product.image}`}
+        src={`img/${props.product.image}.jpg`}
         alt={props.product.name}
       />
       <div>{props.product.description}</div>
