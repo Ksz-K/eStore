@@ -1,36 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductListItem from "./product-list-item";
-import axios from "axios";
+import { loadProducts } from "../product-listing/duck/actions";
 
-class ProductListing extends React.Component {
-  async componentDidMount() {
-    try {
-      const { loadProducts } = this.props;
-      const res = await axios.get("https://kszk-api.herokuapp.com/api/estore");
-      loadProducts(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+const ProductListing = ({ addToCart, removeFromCart, products, cart }) => {
+  // const compDidMount = (async () => {
+  //   try {
+  //     const { loadProducts } = props;
+  //     const res = await axios.get("https://kszk-api.herokuapp.com/api/estore");
+  //     loadProducts(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // })();
 
-  render() {
-    const { addToCart, removeFromCart, products, cart } = this.props;
-    return (
-      <div className="product-listing">
-        {products.map(product => (
-          <ProductListItem
-            key={product.id}
-            product={product}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-            cartItem={cart.filter(cartItem => cartItem.id === product.id)[0]}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    loadProducts();
+  }, []);
+  return (
+    <div className="product-listing">
+      {products.map(product => (
+        <ProductListItem
+          key={product.id}
+          product={product}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          cartItem={cart.filter(cartItem => cartItem.id === product.id)[0]}
+        />
+      ))}
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   cart: state.cart,
@@ -39,7 +39,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadProducts: products => dispatch({ type: "LOAD", payload: products }),
     addToCart: item => dispatch({ type: "ADD", payload: item }),
     removeFromCart: item => dispatch({ type: "REMOVE", payload: item })
   };

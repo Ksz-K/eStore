@@ -1,7 +1,8 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import cartReducer from "../features/cart/reducer";
-import productsReducer from "../features/product-listing/reducer";
+import thunk from "redux-thunk";
+import cartReducer from "./features/cart/reducer";
+import productsReducer from "./features/product-listing/duck/reducers";
 import { reducer as formReducer } from "redux-form";
 
 const saveToLocalStorage = state => {
@@ -24,6 +25,8 @@ const loadFromLocalStorage = () => {
   }
 };
 
+const middleware = [thunk];
+
 const recentVisitState = loadFromLocalStorage();
 
 const rootReducer = combineReducers({
@@ -32,7 +35,11 @@ const rootReducer = combineReducers({
   form: formReducer
 });
 
-const store = createStore(rootReducer, recentVisitState, composeWithDevTools());
+const store = createStore(
+  rootReducer,
+  recentVisitState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
