@@ -1,9 +1,3 @@
-const ADD = "ADD";
-const REMOVE = "REMOVE";
-const REMOVE_ALL = "REMOVE_ALL";
-
-export default {
-  ADD,
-  REMOVE,
-  REMOVE_ALL
-};
+export const ADD = "ADD";
+export const REMOVE = "REMOVE";
+export const REMOVE_ALL = "REMOVE_ALL";

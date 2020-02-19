@@ -7,13 +7,13 @@ const cartReducer = (state = initialState, action) => {
 
   switch (type) {
     case ADD:
-      return addToCart(state, action.payload);
+      return [...payload];
 
     case REMOVE:
-      return removeFromCart(state, action.payload);
+      return [...payload];
 
     case REMOVE_ALL:
-      return removeAllFromCart(state, action.payload);
+      return [...payload];
 
     default:
       return state;

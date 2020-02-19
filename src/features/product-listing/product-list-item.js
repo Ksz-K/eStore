@@ -5,7 +5,7 @@ import RemoveBtn from "./remove-btn";
 const ProductListItem = props => {
   return (
     <div className="product-list-item">
-      <h3>{props.name}</h3>
+      <h3>{props.product.name}</h3>
       <img
         height={100}
         title={props.product.name}
@@ -15,18 +15,8 @@ const ProductListItem = props => {
       <div>{props.product.description}</div>
       <div>${props.product.price}</div>
       <div>
-        <AddBtn
-          cartItem={props.cartItem}
-          product={props.product}
-          addToCart={props.addToCart}
-        />
-        {props.cartItem ? (
-          <RemoveBtn
-            cartItem={props.cartItem}
-            product={props.product}
-            removeFromCart={props.removeFromCart}
-          />
-        ) : null}
+        <AddBtn cartItem={props.cartItem} />
+        {props.cartItem ? <RemoveBtn cartItem={props.cartItem} /> : null}
       </div>
     </div>
   );

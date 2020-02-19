@@ -1,11 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addToCart } from "../cart/duck/actions";
 
-const AddButton = props => {
+const AddButton = ({ addToCart, cart, cartItem }) => {
   return (
-    <button onClick={() => props.addToCart(props.product)}>
-      Add to cart ({(props.cartItem && props.cartItem.quantity) || 0})
+    <button onClick={() => addToCart(cart, cartItem)}>
+      Add to cart ({(cartItem && cartItem.quantity) || 0})
     </button>
   );
 };
 
-export default AddButton;
+const mapStateToProps = state => ({
+  cart: state.cart
+});
+export default connect(mapStateToProps, { addToCart })(AddButton);

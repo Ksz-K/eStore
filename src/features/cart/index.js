@@ -1,5 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  removeAllFromCart
+} from "../cart/duck/actions";
 
 const Cart = props => {
   return (
@@ -20,11 +25,13 @@ const Cart = props => {
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>
-                <button onClick={e => props.addToCart(item)}>+</button>
-                <button onClick={e => props.removeFromCart(item)}>-</button>
+                <button onClick={() => addToCart(props.cart, item)}>+</button>
+                <button onClick={() => removeFromCart(props.cart, item)}>
+                  -
+                </button>
               </td>
               <td>
-                <button onClick={e => props.removeAllFromCart(item)}>
+                <button onClick={() => removeAllFromCart(props.cart, item)}>
                   Remove from cart
                 </button>
               </td>
@@ -39,18 +46,4 @@ const mapStateToProps = state => ({
   cart: state.cart
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToCart: item => {
-      dispatch({ type: "ADD", payload: item });
-    },
-    removeFromCart: item => {
-      dispatch({ type: "REMOVE", payload: item });
-    },
-    removeAllFromCart: item => {
-      dispatch({ type: "REMOVE_ALL", payload: item });
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);
