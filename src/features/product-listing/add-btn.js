@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../cart/duck/actions";
 
-const AddButton = ({ addToCart, cart, cartItem }) => {
+const AddButton = ({ cart, product, addToCart, cartItem }) => {
   return (
-    <button onClick={() => addToCart(cart, cartItem)}>
+    <button onClick={() => addToCart(cart, product)}>
       Add to cart ({(cartItem && cartItem.quantity) || 0})
     </button>
   );

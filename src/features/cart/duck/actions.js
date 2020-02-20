@@ -8,20 +8,19 @@ const itemInCart = (cart, item) =>
 
 export const addToCart = (cart, item) => dispatch => {
   const cartItem = itemInCart(cart, item);
-  console.log(cart);
-  let payload;
+  let itemAdded;
+
   if (cartItem === undefined) {
-    payload = [...cartWithoutItem(cart, item), { ...item, quantity: 1 }];
+    itemAdded = [...cartWithoutItem(cart, item), { ...item, quantity: 1 }];
   } else {
-    payload = [
+    itemAdded = [
       ...cartWithoutItem(cart, item),
       { ...cartItem, quantity: cartItem.quantity + 1 }
     ];
   }
-
   dispatch({
     type: ADD,
-    payload
+    payload: itemAdded
   });
 };
 

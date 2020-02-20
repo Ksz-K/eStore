@@ -6,7 +6,7 @@ import {
   removeAllFromCart
 } from "../cart/duck/actions";
 
-const Cart = props => {
+const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
   return (
     <table>
       <thead>
@@ -18,20 +18,18 @@ const Cart = props => {
         </tr>
       </thead>
       <tbody>
-        {props.cart
+        {cart
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(item => (
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>
-                <button onClick={() => addToCart(props.cart, item)}>+</button>
-                <button onClick={() => removeFromCart(props.cart, item)}>
-                  -
-                </button>
+                <button onClick={() => addToCart(cart, item)}>+</button>
+                <button onClick={() => removeFromCart(cart, item)}>-</button>
               </td>
               <td>
-                <button onClick={() => removeAllFromCart(props.cart, item)}>
+                <button onClick={() => removeAllFromCart(cart, item)}>
                   Remove from cart
                 </button>
               </td>
@@ -46,4 +44,8 @@ const mapStateToProps = state => ({
   cart: state.cart
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, {
+  addToCart,
+  removeFromCart,
+  removeAllFromCart
+})(Cart);

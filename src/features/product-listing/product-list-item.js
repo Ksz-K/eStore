@@ -15,8 +15,10 @@ const ProductListItem = props => {
       <div>{props.product.description}</div>
       <div>${props.product.price}</div>
       <div>
-        <AddBtn cartItem={props.cartItem} />
-        {props.cartItem ? <RemoveBtn cartItem={props.cartItem} /> : null}
+        <AddBtn product={props.product} cartItem={props.cartItem} />
+        {props.cartItem ? (
+          <RemoveBtn product={props.product} cartItem={props.cartItem} />
+        ) : null}
       </div>
     </div>
   );
