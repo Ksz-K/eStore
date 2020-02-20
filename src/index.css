@@ -4,46 +4,12 @@
 
 body {
   border: 7px solid transparent;
-  border-image: linear-gradient(
-    to bottom right,
-    #b827fc 0%,
-    #2c90fc 25%,
-    #b8fd33 50%,
-    #fec837 75%,
-    #fd1892 100%
-  );
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
   border-image-slice: 1;
   height: auto;
   margin: auto;
   width: auto;
-  background-image: -webkit-gradient(
-    linear,
-    0% 0%,
-    100% 100%,
-    color-stop(0, rgb(0, 165, 223)),
-    color-stop(0.066, rgb(62, 20, 123)),
-    color-stop(0.132, rgb(226, 0, 121)),
-    color-stop(0.188, rgb(223, 19, 44)),
-    color-stop(0.241, rgb(243, 239, 21)),
-    color-stop(0.266, rgb(0, 152, 71)),
-    color-stop(0.266, rgb(0, 165, 223)),
-    color-stop(0.332, rgb(62, 20, 123)),
-    color-stop(0.398, rgb(226, 0, 121)),
-    color-stop(0.454, rgb(223, 19, 44)),
-    color-stop(0.507, rgb(243, 239, 21)),
-    color-stop(0.532, rgb(0, 152, 71)),
-    color-stop(0.532, rgb(0, 165, 223)),
-    color-stop(0.598, rgb(62, 20, 123)),
-    color-stop(0.664, rgb(226, 0, 121)),
-    color-stop(0.72, rgb(223, 19, 44)),
-    color-stop(0.773, rgb(243, 239, 21)),
-    color-stop(0.798, rgb(0, 152, 71)),
-    color-stop(0.798, rgb(0, 165, 223)),
-    color-stop(0.864, rgb(62, 20, 123)),
-    color-stop(0.93, rgb(226, 0, 121)),
-    color-stop(0.986, rgb(223, 19, 44)),
-    color-stop(1, rgb(238, 181, 27))
-  );
+  background-image: url("https://kszk.vot.pl/hexellence.png");
 }
 nav a img {
   width: 50px;
@@ -104,6 +70,10 @@ nav a img {
 
 .shopping-item.amount :hover {
   background-color: #28a745;
+}
+
+.min-vh-90 {
+  min-height: 90vh !important;
 }
 
 /* 

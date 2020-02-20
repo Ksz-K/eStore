@@ -31,6 +31,11 @@ const Navigation = ({ cart }) => (
             Regulamin
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to="/contact" className="nav-link">
+            Kontakt
+          </NavLink>
+        </li>
         <li className="nav-item d-lg-none">
           <NavLink className="nav-link" to="/cart">
             Koszyk (
@@ -73,14 +78,21 @@ const Navigation = ({ cart }) => (
         </li>
       </ul>
       <form className="form-inline my-2 my-lg-0">
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <span>
+            <i class="fa fa-search-plus"></i>
+          </span>
+        </button>
         <input
           className="form-control mr-sm-2"
           type="search"
-          placeholder="Search"
+          placeholder="Szukaj..."
           aria-label="Search"
         />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
+      </form>
+      <form className="form-inline my-2 my-lg-0">
+        <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
+          Zaloguj
         </button>
       </form>
     </div>
@@ -88,16 +100,3 @@ const Navigation = ({ cart }) => (
 );
 
 export default Navigation;
-//  <nav>
-//     <ul classNameName="top-menu">
-//       <li>
-//         <NavLink to="/">Home</NavLink>
-//       </li>
-//       <li>
-
-//       </li>
-//       <li>
-//         <NavLink to="/checkout">Check out</NavLink>
-//       </li>
-//     </ul>
-//   </nav>

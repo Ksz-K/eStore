@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductListItem from "./product-list-item";
+import Spinner from "../../pages/spinner";
 import { loadProducts } from "../product-listing/duck/actions";
 
 const ProductListing = ({ products, cart, loadProducts }) => {
@@ -8,6 +9,7 @@ const ProductListing = ({ products, cart, loadProducts }) => {
     loadProducts();
   }, []);
 
+  if (!products || products.lenth === 0) return <Spinner />;
   return (
     <div className="product-listing">
       {products.map(product => (
