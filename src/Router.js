@@ -4,6 +4,7 @@ import CartPage from "./pages/cartpage";
 import CheckoutPage from "./pages/checkoutpage";
 import OrdersPage from "./pages/orderspage";
 import NotFound from "./pages/notfound";
+import TermsOfUse from "./pages/termsofuse";
 import { Switch, Route } from "react-router-dom";
 
 const Router = () => {
@@ -13,6 +14,7 @@ const Router = () => {
       <Route exact path="/cart" component={CartPage} />
       <Route exact path="/checkout" component={CheckoutPage} />
       <Route path="/orders/:id" component={OrdersPage} />
+      <Route path="/termsofuse" component={TermsOfUse} />
       <Route component={NotFound} />
     </Switch>
   );

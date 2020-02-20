@@ -1,6 +1,112 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  border: 7px solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+  border-image-slice: 1;
+  height: auto;
+  margin: auto;
+  width: auto;
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    100% 100%,
+    color-stop(0, rgb(0, 165, 223)),
+    color-stop(0.066, rgb(62, 20, 123)),
+    color-stop(0.132, rgb(226, 0, 121)),
+    color-stop(0.188, rgb(223, 19, 44)),
+    color-stop(0.241, rgb(243, 239, 21)),
+    color-stop(0.266, rgb(0, 152, 71)),
+    color-stop(0.266, rgb(0, 165, 223)),
+    color-stop(0.332, rgb(62, 20, 123)),
+    color-stop(0.398, rgb(226, 0, 121)),
+    color-stop(0.454, rgb(223, 19, 44)),
+    color-stop(0.507, rgb(243, 239, 21)),
+    color-stop(0.532, rgb(0, 152, 71)),
+    color-stop(0.532, rgb(0, 165, 223)),
+    color-stop(0.598, rgb(62, 20, 123)),
+    color-stop(0.664, rgb(226, 0, 121)),
+    color-stop(0.72, rgb(223, 19, 44)),
+    color-stop(0.773, rgb(243, 239, 21)),
+    color-stop(0.798, rgb(0, 152, 71)),
+    color-stop(0.798, rgb(0, 165, 223)),
+    color-stop(0.864, rgb(62, 20, 123)),
+    color-stop(0.93, rgb(226, 0, 121)),
+    color-stop(0.986, rgb(223, 19, 44)),
+    color-stop(1, rgb(238, 181, 27))
+  );
+}
+nav a img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.bg-grey {
+  background-color: #ccc;
+  padding: 17px;
+}
+
+.hJdCJt {
+  left: 10vw !important;
+  right: 14vw !important;
+  width: 78% !important;
+}
+
+.shopping-item {
+  float: right;
+  font-size: 1rem;
+  padding: 8px 20px;
+  position: relative;
+}
+.shopping-item a {
+  color: #666;
+  text-decoration: none;
+}
+.cart-amunt {
+  color: #5a88ca;
+  font-weight: 700;
+}
+.product-count {
+  background: none repeat scroll 0 0 #5a88ca;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  height: 20px;
+  padding-top: 2px;
+  position: absolute;
+  right: -10px;
+  text-align: center;
+  top: -10px;
+  width: 20px;
+}
+.shopping-item i {
+  margin-left: 15px;
+}
+
+.shopping-item :hover {
+  background-color: #5e9ad6;
+  color: #fff;
+  border-radius: 15px;
+  transition-delay: 123ms;
+  transition-duration: 1234ms;
+}
+
+.shopping-item.amount :hover {
+  background-color: #28a745;
+}
+
+/* 
 body {
   margin: 0;
   padding: 0;
@@ -48,4 +154,4 @@ ul.top-menu li:before {
 ul.top-menu li:first-child::before {
   content: "";
   margin: 0;
-}
+} */
