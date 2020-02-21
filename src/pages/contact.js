@@ -20,7 +20,7 @@ const Contact = () => {
         <div className="carousel-item active">
           <img
             src="img/www.jpg"
-            className="d-block w-100 min-vh-90"
+            className="d-block w-100 min-vh-81p4"
             alt="www"
           />
           <div className="carousel-caption d-none d-md-block">
@@ -33,7 +33,7 @@ const Contact = () => {
         <div className="carousel-item">
           <img
             src="img/globe.jpg"
-            className="d-block w-100 min-vh-90"
+            className="d-block w-100 min-vh-81p4"
             alt="Earth"
           />
           <div className="carousel-caption d-none d-md-block">
@@ -47,7 +47,7 @@ const Contact = () => {
         <div className="carousel-item">
           <img
             src="img/milky.jpg"
-            className="d-block w-100 min-vh-90"
+            className="d-block w-100 min-vh-81p4"
             alt="Universe"
           />
           <div className="carousel-caption d-none d-md-block">

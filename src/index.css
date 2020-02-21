@@ -7,7 +7,7 @@ body {
   border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
   border-image-slice: 1;
   height: auto;
-  margin: auto;
+  margin: 7.5vh auto 6vh;
   width: auto;
   background-image: url("https://kszk.vot.pl/hexellence.png");
 }
@@ -23,9 +23,19 @@ nav a img {
   padding: 17px;
 }
 
+.bg-green {
+  background-image: url("https://kszk.vot.pl/bg-green.jpg");
+  background-size: contain;
+  padding: 0 70px 0 70px;
+}
+
+.onfoot {
+  font-weight: bolder;
+}
 .hJdCJt {
   left: 10vw !important;
   right: 14vw !important;
+  top: 9vh !important;
   width: 78% !important;
 }
 
@@ -73,12 +83,21 @@ nav a img {
   background-color: #28a745;
 }
 
-.min-vh-90 {
-  min-height: 90vh !important;
+.min-vh-81p4 {
+  height: 81.4vh !important;
+}
+
+@media (min-width: 576px) {
+  .form-inline .form-control {
+    width: 9rem !important;
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 90%;
+  }
+  .form-inline .form-control {
+    width: auto !important;
   }
 }

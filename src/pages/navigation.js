@@ -2,9 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navigation = ({ cart }) => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <nav className="fixed-top navbar navbar-expand-lg navbar-light bg-light">
     <NavLink to="/" className="navbar-brand">
-      <img src="https://kszk.vot.pl/kszk.png" alt="logo" />
+      <small>
+        <strong class="border pb-1">&nbsp;Toys4Us&nbsp;</strong>
+      </small>{" "}
+      <img src="https://kszk.vot.pl/d4us.jpg" alt="logo" />
     </NavLink>
     <button
       className="navbar-toggler"
@@ -20,10 +23,9 @@ const Navigation = ({ cart }) => (
 
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
+        <li className="nav-item">
           <NavLink to="/" className="nav-link">
             Start
-            <span className="sr-only">(current)</span>
           </NavLink>
         </li>
         <li className="nav-item">
