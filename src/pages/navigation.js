@@ -49,7 +49,7 @@ const Navigation = ({ cart }) => (
           <NavLink to="/cart">
             &nbsp;Koszyk
             <i className="fa fa-shopping-cart"></i>
-            {""}
+            {""}&nbsp;
             <span className="product-count">
               {cart.reduce((acc, item) => {
                 return acc + item.quantity;
@@ -80,7 +80,7 @@ const Navigation = ({ cart }) => (
       <form className="form-inline my-2 my-lg-0">
         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
           <span>
-            <i class="fa fa-search-plus"></i>
+            <i className="fa fa-search-plus"></i>
           </span>
         </button>
         <input

@@ -11,6 +11,7 @@ body {
   width: auto;
   background-image: url("https://kszk.vot.pl/hexellence.png");
 }
+
 nav a img {
   width: 50px;
   height: 50px;
@@ -76,52 +77,8 @@ nav a img {
   min-height: 90vh !important;
 }
 
-/* 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  width: 100%;
-  background-color: skyblue;
+@media (min-width: 1200px) {
+  .container {
+    max-width: 90%;
+  }
 }
-
-.page-container {
-  width: 800px;
-  padding: 32px;
-  margin: 10px auto;
-  background-color: white;
-  position: relative;
-}
-
-.product-listing {
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.product-listing .product-list-item {
-  padding: 10px 30px;
-  width: 200px;
-}
-
-ul.top-menu {
-  position: absolute;
-  right: 50px;
-  top: 50px;
-  margin: 0;
-}
-
-ul.top-menu li {
-  display: inline-block;
-}
-
-ul.top-menu li:before {
-  content: "|";
-  margin: 0 4px;
-}
-
-ul.top-menu li:first-child::before {
-  content: "";
-  margin: 0;
-} */

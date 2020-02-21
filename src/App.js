@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Router from "./Router";
 import { connect } from "react-redux";
 import Navigation from "./pages/navigation";
+import Footer from "./pages/footer";
 
 const App = ({ cart }) => {
   return (
@@ -11,6 +12,7 @@ const App = ({ cart }) => {
       <div className="container">
         <Router />
       </div>
+      <Footer />
     </div>
   );
 };
