@@ -5,7 +5,7 @@ const Navigation = ({ cart }) => (
   <nav className="fixed-top navbar navbar-expand-lg navbar-light bg-light">
     <NavLink to="/" className="navbar-brand">
       <small>
-        <strong class="border pb-1">&nbsp;Toys4Us&nbsp;</strong>
+        <strong className="border pb-1">&nbsp;Toys4Us&nbsp;</strong>
       </small>{" "}
       <img src="https://kszk.vot.pl/d4us.jpg" alt="logo" />
     </NavLink>

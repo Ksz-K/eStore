@@ -29,6 +29,10 @@ nav a img {
   padding: 0 70px 0 70px;
 }
 
+.bg-toy {
+  background-image: url("https://kszk.vot.pl/bg-toy.png");
+  background-size: cover;
+}
 .onfoot {
   font-weight: bolder;
 }
@@ -85,6 +89,10 @@ nav a img {
 
 .min-vh-81p4 {
   height: 81.4vh !important;
+}
+
+.img-thumbnail {
+  max-height: 150px;
 }
 
 @media (min-width: 576px) {

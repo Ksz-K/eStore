@@ -1,4 +1,4 @@
-import { LOAD } from "./types";
+import { LOAD, LOAD_PART } from "./types";
 import axios from "axios";
 
 export const loadProducts = () => async dispatch => {
@@ -7,6 +7,23 @@ export const loadProducts = () => async dispatch => {
     dispatch({
       type: LOAD,
       payload: res.data
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const loadSomeProducts = (
+  startPosition = 0,
+  howMany = 7
+) => async dispatch => {
+  try {
+    const res = await axios.get(
+      `https://kszk-api.herokuapp.com/api/estore/${startPosition}/${howMany}`
+    );
+    dispatch({
+      type: LOAD_PART,
+      payload: res.data.productsOnShelf
     });
   } catch (err) {
     console.log(err);
