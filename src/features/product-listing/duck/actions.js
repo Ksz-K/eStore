@@ -15,7 +15,7 @@ export const loadProducts = () => async dispatch => {
 
 export const loadSomeProducts = (
   startPosition = 0,
-  howMany = 7
+  howMany = 3
 ) => async dispatch => {
   try {
     const res = await axios.get(

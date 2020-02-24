@@ -28,7 +28,12 @@ const ProductListItem = props => {
         />
         <h1 className="card-title pricing-card-title">
           {props.product.price} zł{" "}
-          <small className="text-muted"> Promocja </small>
+          {props.home === undefined ? (
+            <p>
+              <i className="fa fa-bell" style={{ fontSize: "14px" }}></i>
+              <small className="text-muted"> Polecamy </small>
+            </p>
+          ) : null}
         </h1>
         <div className="btn btn-lg btn-block btn-outline-primary">
           <AddBtn product={props.product} cartItem={props.cartItem} />
@@ -39,22 +44,3 @@ const ProductListItem = props => {
 };
 
 export default ProductListItem;
-{
-  /* <div className="product-list-item">
-      <h3>{props.product.name}</h3>
-      <img
-        height={100}
-        title={props.product.name}
-        src={`img/${props.product.image}.jpg`}
-        alt={props.product.name}
-      />
-      <div>{props.product.description}</div>
-      <div>${props.product.price}</div>
-      <div>
-        <AddBtn product={props.product} cartItem={props.cartItem} />
-        {props.cartItem ? (
-          <RemoveBtn product={props.product} cartItem={props.cartItem} />
-        ) : null}
-      </div>
-    </div> */
-}

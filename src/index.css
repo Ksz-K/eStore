@@ -4,7 +4,14 @@
 
 body {
   border: 7px solid transparent;
-  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
   border-image-slice: 1;
   height: auto;
   margin: 7.5vh auto 6vh;
@@ -92,19 +99,19 @@ nav a img {
 }
 
 .img-thumbnail {
-  max-height: 150px;
+  max-height: 100px;
 }
 
 @media (min-width: 576px) {
   .form-inline .form-control {
     width: 9rem !important;
   }
+  .container {
+    max-width: 90% !important;
+  }
 }
 
 @media (min-width: 1200px) {
-  .container {
-    max-width: 90%;
-  }
   .form-inline .form-control {
     width: auto !important;
   }
