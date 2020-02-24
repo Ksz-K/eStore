@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Navigation = ({ cart }) => (
   <nav className="fixed-top navbar navbar-expand-lg navbar-light bg-light">
@@ -89,7 +90,6 @@ const Navigation = ({ cart }) => (
           className="form-control mr-sm-2"
           type="search"
           placeholder="Szukaj..."
-          aria-label="Search"
         />
       </form>
       <form className="form-inline my-2 my-lg-0">
@@ -101,4 +101,5 @@ const Navigation = ({ cart }) => (
   </nav>
 );
 
-export default Navigation;
+const mapStateToProps = state => ({});
+export default connect(mapStateToProps)(Navigation);

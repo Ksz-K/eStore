@@ -4,7 +4,11 @@ import { addToCart } from "../cart/duck/actions";
 
 const AddButton = ({ cart, product, addToCart, cartItem }) => {
   return (
-    <div onClick={() => addToCart(cart, product)}>
+    <div
+      className="m-0 p-0"
+      style={{ fontSize: "0.9rem" }}
+      onClick={() => addToCart(cart, product)}
+    >
       Do Koszyka {cartItem ? <span>({cartItem.quantity})</span> : ""}
     </div>
   );

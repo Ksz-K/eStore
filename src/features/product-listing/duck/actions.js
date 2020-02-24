@@ -1,4 +1,4 @@
-import { LOAD, LOAD_PART } from "./types";
+import { LOAD, LOAD_PART, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
 import axios from "axios";
 
 export const loadProducts = () => async dispatch => {
@@ -24,6 +24,19 @@ export const loadSomeProducts = (
     dispatch({
       type: LOAD_PART,
       payload: res.data.productsOnShelf
+    });
+
+    dispatch({
+      type: TOYS_FILTER,
+      payload: null
+    });
+    dispatch({
+      type: TOYS_PRICE,
+      payload: null
+    });
+    dispatch({
+      type: TOYS_NAME,
+      payload: -1
     });
   } catch (err) {
     console.log(err);
