@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { searchHidden } from "../pages/navigation/duck/actions";
 
-const Contact = () => {
+const Contact = ({ searchHidden }) => {
+  useEffect(() => {
+    searchHidden();
+  }, []);
+
   return (
     <div
       id="contactDeatails"
@@ -80,4 +86,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default connect(null, { searchHidden })(Contact);

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReadingProgress from "react-reading-progress";
+import { connect } from "react-redux";
+import { searchHidden } from "../pages/navigation/duck/actions";
 
-const TermsOfUse = () => {
+const TermsOfUse = ({ searchHidden }) => {
+  useEffect(() => {
+    searchHidden();
+  }, []);
   return (
     <div className="bg-grey">
       <ReadingProgress targetEl="#termsOfuse" />
@@ -510,4 +515,4 @@ const TermsOfUse = () => {
   );
 };
 
-export default TermsOfUse;
+export default connect(null, { searchHidden })(TermsOfUse);

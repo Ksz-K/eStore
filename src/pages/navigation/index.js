@@ -1,8 +1,9 @@
 import React from "react";
+import CatalogSearch from "../../features/product-listing/catalogsearch";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Navigation = ({ cart }) => (
+const Navigation = ({ cart, searchSeen }) => (
   <nav className="fixed-top navbar navbar-expand-lg navbar-light bg-light">
     <NavLink to="/" className="navbar-brand">
       <small>
@@ -80,18 +81,15 @@ const Navigation = ({ cart }) => (
           </NavLink>
         </li>
       </ul>
-      <form className="form-inline my-2 my-lg-0">
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-          <span>
-            <i className="fa fa-search-plus"></i>
-          </span>
-        </button>
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          placeholder="Szukaj..."
-        />
-      </form>
+      {searchSeen ? (
+        <CatalogSearch />
+      ) : (
+        <div className="nav-item">
+          <NavLink className="nav-link" to="/store">
+            Do Sklepu
+          </NavLink>
+        </div>
+      )}
       <form className="form-inline my-2 my-lg-0">
         <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
           Zaloguj
@@ -101,5 +99,7 @@ const Navigation = ({ cart }) => (
   </nav>
 );
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  searchSeen: state.nav.searchSeen
+});
 export default connect(mapStateToProps)(Navigation);

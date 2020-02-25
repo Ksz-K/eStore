@@ -13,25 +13,25 @@ const CurrentDay = () => {
 
   switch (day) {
     case 1:
-      day4www = "poniedziałek";
+      day4www = "w poniedziałek";
       break;
     case 2:
-      day4www = "wtorek";
+      day4www = "we wtorek";
       break;
     case 3:
-      day4www = "środę";
+      day4www = "w środę";
       break;
     case 4:
-      day4www = "czwartek";
+      day4www = "w czwartek";
       break;
     case 5:
-      day4www = "piątek";
+      day4www = "w piątek";
       break;
     case 6:
-      day4www = "sobotę";
+      day4www = "w sobotę";
       break;
     case 0:
-      day4www = "niedzielę";
+      day4www = "w niedzielę";
       break;
     default:
       break;
@@ -80,10 +80,10 @@ const CurrentDay = () => {
   return (
     <div className="text-center bg-toy">
       <h1>
-        Witamy w {day4www} {dayofmonth}. {month4www}
+        Witamy {day4www} {dayofmonth}. {month4www}
       </h1>
       <p className="lead">Do Dnia Dziecka pozostało jedynie {timeleft} dni</p>
-      <h2>Dziś w POLECAMY</h2>
+      <h2>Dziś POLECAMY</h2>
     </div>
   );
 };

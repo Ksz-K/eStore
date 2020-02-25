@@ -1,4 +1,4 @@
-import { LOAD, LOAD_PART, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
+import { LOAD, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
 import axios from "axios";
 
 export const loadProducts = (
@@ -33,7 +33,7 @@ export const sortPrice = (direction = null) => dispatch => {
 };
 export const filterText = (text = "") => dispatch => {
   dispatch({
-    type: TOYS_PRICE,
+    type: TOYS_FILTER,
     payload: text
   });
 };

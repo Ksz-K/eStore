@@ -3,6 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import cartReducer from "./features/cart/duck/reducers";
 import productsReducer from "./features/product-listing/duck/reducers";
+import navReducer from "./pages/navigation/duck/reducers";
 import { reducer as formReducer } from "redux-form";
 
 // const saveToLocalStorage = state => {
@@ -32,7 +33,8 @@ const middleware = [thunk];
 const rootReducer = combineReducers({
   cart: cartReducer,
   products: productsReducer,
-  form: formReducer
+  form: formReducer,
+  nav: navReducer
 });
 
 const store = createStore(

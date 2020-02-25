@@ -25,12 +25,18 @@ const ProductListItem = props => {
           }
           alt="AgeIcon"
         />
-        <h2 className="card-title pricing-card-title">
-          {props.product.price} zł{" "}
+        <h2
+          className="card-title pricing-card-title"
+          style={{ fontFamily: "Economica" }}
+        >
+          {props.product.price} <small>zł</small>
           {props.home === undefined ? (
             <p>
               <i className="fa fa-bell" style={{ fontSize: "14px" }}></i>
-              <small className="text-muted"> Polecamy </small>
+              <strong style={{ fontFamily: "Butterfly Kids" }}>
+                {" "}
+                Polecamy{" "}
+              </strong>
             </p>
           ) : null}
         </h2>

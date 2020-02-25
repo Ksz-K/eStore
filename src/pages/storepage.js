@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { searchVisible } from "../pages/navigation/duck/actions";
 import StoreDashboard from "../features/product-listing/dashboard";
 import ProductListing from "../features/product-listing";
 
-const StorePage = props => {
+const StorePage = ({ searchVisible }) => {
+  useEffect(() => {
+    searchVisible();
+  }, []);
+
   return (
     <div>
       <StoreDashboard />
@@ -11,4 +17,4 @@ const StorePage = props => {
   );
 };
 
-export default StorePage;
+export default connect(null, { searchVisible })(StorePage);

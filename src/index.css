@@ -104,6 +104,14 @@ nav a img {
   -webkit-line-clamp: 5;
 }
 
+.mt-5p5 {
+  margin-top: 5.5rem !important;
+}
+
+.dumb {
+  pointer-events: none;
+  cursor: not-allowed;
+}
 @media (min-width: 576px) {
   .form-inline .form-control {
     width: 9rem !important;

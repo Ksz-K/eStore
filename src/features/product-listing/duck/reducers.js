@@ -1,4 +1,4 @@
-import { LOAD, LOAD_PART, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
+import { LOAD, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
 
 const initialState = [];
 const productsReducer = (state = initialState, action) => {
@@ -8,12 +8,24 @@ const productsReducer = (state = initialState, action) => {
     case LOAD:
       return [...payload];
 
-    case LOAD_PART:
-      return [...payload];
-
     case TOYS_FILTER:
-      if (!payload) {
-        return [...state.filter(product => product.price > 0)];
+      if (payload !== "") {
+        const name = state.filter(product =>
+          product.name.toLowerCase().includes(payload.toLowerCase())
+        );
+        const description = state.filter(product =>
+          product.description.toLowerCase().includes(payload.toLowerCase())
+        );
+        const keywords = state.filter(product =>
+          product.keywords
+            .join()
+            .toLowerCase()
+            .includes(payload.toLowerCase())
+        );
+        const filtered = [...name, ...description, ...keywords];
+        return filtered.filter((obj, pos, arr) => {
+          return arr.map(mapObj => mapObj.id).indexOf(obj.id) === pos;
+        });
       }
       return state;
 
