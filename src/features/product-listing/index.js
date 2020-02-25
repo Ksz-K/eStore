@@ -1,17 +1,17 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import ProductListItem from "./product-list-item";
-import { loadSomeProducts } from "../product-listing/duck/actions";
+import { loadProducts } from "../product-listing/duck/actions";
 
 const ProductListing = ({
   productsLoadStart,
   productsLoadEntries,
   products,
   cart,
-  loadSomeProducts
+  loadProducts
 }) => {
   useEffect(() => {
-    loadSomeProducts(productsLoadStart, productsLoadEntries);
+    loadProducts(productsLoadStart, productsLoadEntries);
   }, []);
 
   const productsOnShelf = 5;
@@ -77,4 +77,4 @@ const mapStateToProps = state => ({
   products: state.products
 });
 
-export default connect(mapStateToProps, { loadSomeProducts })(ProductListing);
+export default connect(mapStateToProps, { loadProducts })(ProductListing);

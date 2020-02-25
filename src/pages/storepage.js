@@ -1,9 +1,11 @@
 import React from "react";
+import StoreDashboard from "../features/product-listing/dashboard";
 import ProductListing from "../features/product-listing";
 
 const StorePage = props => {
   return (
-    <div style={{ backgroundColor: "skyBlue" }}>
+    <div>
+      <StoreDashboard />
       <ProductListing productsLoadStart={0} productsLoadEntries={Infinity} />
     </div>
   );

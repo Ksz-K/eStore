@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import AddBtn from "./add-btn";
 
 const ProductListItem = props => {
