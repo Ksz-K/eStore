@@ -112,6 +112,14 @@ nav a img {
   pointer-events: none;
   cursor: not-allowed;
 }
+
+.card {
+  border: 7px solid transparent;
+}
+.card-deck > .card:hover {
+  border: 7px solid #1c6ea4;
+}
+
 @media (min-width: 576px) {
   .form-inline .form-control {
     width: 9rem !important;
