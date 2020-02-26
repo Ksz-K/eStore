@@ -1,4 +1,4 @@
-import { LOAD, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
+import { LOAD, LOAD_PREV, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
 
 const initialState = [];
 const productsReducer = (state = initialState, action) => {
@@ -6,6 +6,9 @@ const productsReducer = (state = initialState, action) => {
 
   switch (type) {
     case LOAD:
+      return [...payload];
+
+    case LOAD_PREV:
       return [...payload];
 
     case TOYS_FILTER:

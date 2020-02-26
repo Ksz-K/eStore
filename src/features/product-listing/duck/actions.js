@@ -1,4 +1,4 @@
-import { LOAD, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
+import { LOAD, LOAD_PREV, TOYS_FILTER, TOYS_PRICE, TOYS_NAME } from "./types";
 import axios from "axios";
 
 export const loadProducts = (
@@ -16,6 +16,13 @@ export const loadProducts = (
   } catch (err) {
     console.log(err);
   }
+};
+
+export const loadPrev = content => dispatch => {
+  dispatch({
+    type: LOAD_PREV,
+    payload: content
+  });
 };
 
 export const sortName = (direction = null) => dispatch => {
