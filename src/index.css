@@ -9,7 +9,7 @@ body {
   height: auto;
   margin: 7.5vh auto 6vh;
   width: auto;
-  background-image: url("https://kszk.vot.pl/hexellence.png");
+  background-image: url("/img/hexellence.png");
 }
 
 nav a img {
@@ -32,6 +32,10 @@ nav a img {
 .bg-toy {
   background-image: url("https://kszk.vot.pl/bg-toy.png");
   background-size: cover;
+}
+
+.bg-brick {
+  background-image: url("/img/brickwall.png");
 }
 .onfoot {
   font-weight: bolder;
@@ -123,6 +127,10 @@ nav a img {
 .modal-img {
   max-width: 40vw;
   max-height: 40vh;
+}
+
+.width-7rem {
+  min-width: 7rem;
 }
 @media (min-width: 576px) {
   .form-inline .form-control {
