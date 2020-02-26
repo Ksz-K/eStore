@@ -120,6 +120,10 @@ nav a img {
   border: 7px solid #1c6ea4;
 }
 
+.modal-img {
+  max-width: 40vw;
+  max-height: 40vh;
+}
 @media (min-width: 576px) {
   .form-inline .form-control {
     width: 9rem !important;

@@ -4,8 +4,8 @@ import thunk from "redux-thunk";
 import cartReducer from "./features/cart/duck/reducers";
 import productsReducer from "./features/product-listing/duck/reducers";
 import navReducer from "./pages/navigation/duck/reducers";
+import modalReducer from "./features/modal/duck/reducers";
 import { reducer as formReducer } from "redux-form";
-
 // const saveToLocalStorage = state => {
 //   try {
 //     const serializedState = JSON.stringify(state);
@@ -34,7 +34,8 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   products: productsReducer,
   form: formReducer,
-  nav: navReducer
+  nav: navReducer,
+  modal: modalReducer
 });
 
 const store = createStore(

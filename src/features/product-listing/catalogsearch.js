@@ -22,11 +22,6 @@ const CatalogSearch = ({ filterText, loadPrev, toysSeen }) => {
   };
   return (
     <form className="form-inline my-2 my-lg-0">
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-        <span>
-          <i className="fa fa-search-plus"></i>
-        </span>
-      </button>
       <input
         className="form-control mr-sm-2"
         type="text"
