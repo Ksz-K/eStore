@@ -82,7 +82,9 @@ const CurrentDay = () => {
       <h1>
         Witamy {day4www} {dayofmonth}. {month4www}
       </h1>
-      <p className="lead">Do Dnia Dziecka pozostało jedynie {timeleft} dni</p>
+      <p className="lead m-0">
+        Do Dnia Dziecka pozostało jedynie {timeleft} dni
+      </p>
       <h2>Dziś POLECAMY</h2>
     </div>
   );

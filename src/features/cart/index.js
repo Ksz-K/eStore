@@ -8,14 +8,22 @@ import {
   removeAllFromCart
 } from "../cart/duck/actions";
 
-const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
+const Cart = ({
+  cart,
+  addToCart,
+  removeFromCart,
+  removeAllFromCart,
+  buttonSeen
+}) => {
   return (
-    <table>
+    <table class="table-responsive">
       <thead>
         <tr>
           <th class="text-center mx-4 width-7rem">Produkt</th>
           <th class="text-center mx-4 width-7rem">Ilość</th>
-          <th class="text-center mx-4 width-7rem">Cena</th>
+          <th class="text-center mx-4 width-7rem d-none d-md-table-cell">
+            Cena
+          </th>
           <th class="text-center mx-4 width-7rem">Wartość</th>
           <th class="text-center mx-4 width-7rem"></th>
           <th class="text-center mx-4 width-7rem"></th>
@@ -32,7 +40,9 @@ const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
                 <small>{CutText(item.description, 50)}</small>
               </td>
               <td class="text-center">{item.quantity}</td>
-              <td class="text-center">{item.price} zł</td>
+              <td class="text-center d-none d-md-table-cell">
+                {item.price} zł
+              </td>
               <td class="text-center">
                 {(item.quantity * item.price).toFixed(2)} zł
               </td>
@@ -55,7 +65,7 @@ const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
                   class="btn btn-danger btn-sm"
                   onClick={() => removeAllFromCart(cart, item)}
                 >
-                  Usuń z koszyka
+                  Usuń
                 </button>
               </td>
             </tr>
@@ -63,27 +73,38 @@ const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan={6} class="px-4"></td>
+          <td colSpan={6} class="py-2"></td>
         </tr>
         <tr>
           <td colSpan={4} class="text-right">
-            <button className="btn btn-primary btn-lg">
-              <NavLink
-                to="/checkout"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                &nbsp;Do kasy&nbsp;
-                <span className="badge badge-success">
-                  {cart
-                    .reduce((acc, item) => {
-                      return acc + item.quantity * item.price;
-                    }, 0)
-                    .toFixed(2)}
-                  &nbsp;zł
-                </span>{" "}
-                &nbsp;
-              </NavLink>
-            </button>
+            {buttonSeen ? (
+              <button className="btn btn-primary btn-lg">
+                <NavLink
+                  to="/checkout"
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  &nbsp;Do kasy&nbsp;
+                  <span className="badge badge-success">
+                    {cart
+                      .reduce((acc, item) => {
+                        return acc + item.quantity * item.price;
+                      }, 0)
+                      .toFixed(2)}
+                    &nbsp;zł
+                  </span>{" "}
+                  &nbsp;
+                </NavLink>
+              </button>
+            ) : (
+              <span className="badge badge-primary mr-4">
+                {cart
+                  .reduce((acc, item) => {
+                    return acc + item.quantity * item.price;
+                  }, 0)
+                  .toFixed(2)}
+                &nbsp;zł&nbsp;
+              </span>
+            )}
           </td>
           <td></td>
           <td></td>
@@ -93,6 +114,9 @@ const Cart = ({ cart, addToCart, removeFromCart, removeAllFromCart }) => {
   );
 };
 
+Cart.defaultProps = {
+  buttonSeen: true
+};
 const mapStateToProps = state => ({
   cart: state.cart
 });

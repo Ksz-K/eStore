@@ -38,11 +38,14 @@ const Checkout = props => {
   const { cart } = props;
 
   return (
-    <div>
-      <div style={{ border: "1px solid #000" }}>
-        <Cart />
+    <div className="row justify-content-between">
+      <div className="col-12 col-xl-8 border">
+        <Cart buttonSeen={false} />
       </div>
-      <CheckoutForm onSubmit={values => submitOrder(values, cart)} />
+
+      <div className="col-12 col-xl-4 border bg-bluesnow">
+        <CheckoutForm onSubmit={values => submitOrder(values, cart)} />
+      </div>
     </div>
   );
 };

@@ -24,18 +24,22 @@ nav a img {
 }
 
 .bg-green {
-  background-image: url("https://kszk.vot.pl/bg-green.jpg");
+  background-image: url("/img/bg-green.jpg");
   background-size: contain;
   padding: 0 70px 0 70px;
 }
 
 .bg-toy {
-  background-image: url("https://kszk.vot.pl/bg-toy.png");
+  background-image: url("/img/bg-toy.png");
   background-size: cover;
 }
 
 .bg-brick {
   background-image: url("/img/brickwall.png");
+}
+
+.bg-bluesnow {
+  background-image: url("/img/blue-snow.png");
 }
 .onfoot {
   font-weight: bolder;
@@ -129,9 +133,6 @@ nav a img {
   max-height: 40vh;
 }
 
-.width-7rem {
-  min-width: 7rem;
-}
 @media (min-width: 576px) {
   .form-inline .form-control {
     width: 9rem !important;
@@ -141,6 +142,11 @@ nav a img {
   }
 }
 
+@media (min-width: 992px) {
+  .width-7rem {
+    min-width: 7rem;
+  }
+}
 @media (min-width: 1200px) {
   .form-inline .form-control {
     width: auto !important;
