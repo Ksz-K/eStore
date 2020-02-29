@@ -33,7 +33,7 @@ const ToyDetails = ({ toy, cart }) => {
           </div>
           <div className="modal-body">
             <img
-              class="modal-img"
+              className="modal-img"
               title={toy.name}
               src={`img/${toy.image}.jpg`}
               alt={toy.name}

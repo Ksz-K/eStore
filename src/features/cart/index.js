@@ -16,17 +16,17 @@ const Cart = ({
   buttonSeen
 }) => {
   return (
-    <table class="table-responsive">
+    <table className="table-responsive">
       <thead>
         <tr>
-          <th class="text-center mx-4 width-7rem">Produkt</th>
-          <th class="text-center mx-4 width-7rem">Ilość</th>
-          <th class="text-center mx-4 width-7rem d-none d-md-table-cell">
+          <th className="text-center mx-4 width-7rem">Produkt</th>
+          <th className="text-center mx-4 width-7rem">Ilość</th>
+          <th className="text-center mx-4 width-7rem d-none d-md-table-cell">
             Cena
           </th>
-          <th class="text-center mx-4 width-7rem">Wartość</th>
-          <th class="text-center mx-4 width-7rem"></th>
-          <th class="text-center mx-4 width-7rem"></th>
+          <th className="text-center mx-4 width-7rem">Wartość</th>
+          <th className="text-center mx-4 width-7rem"></th>
+          <th className="text-center mx-4 width-7rem"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,27 +34,27 @@ const Cart = ({
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(item => (
             <tr key={item.id}>
-              <td class="font-weight-bold">
+              <td className="font-weight-bold">
                 {item.name}
                 <br />
                 <small>{CutText(item.description, 50)}</small>
               </td>
-              <td class="text-center">{item.quantity}</td>
-              <td class="text-center d-none d-md-table-cell">
+              <td className="text-center">{item.quantity}</td>
+              <td className="text-center d-none d-md-table-cell">
                 {item.price} zł
               </td>
-              <td class="text-center">
+              <td className="text-center">
                 {(item.quantity * item.price).toFixed(2)} zł
               </td>
               <td>
                 <button
-                  class="btn btn-success btn-sm"
+                  className="btn btn-success btn-sm"
                   onClick={() => addToCart(cart, item)}
                 >
                   <i className="fa fa-plus-square-o"></i>
                 </button>
                 <button
-                  class="btn btn-warning btn-sm"
+                  className="btn btn-warning btn-sm"
                   onClick={() => removeFromCart(cart, item)}
                 >
                   <i className="fa fa-minus-square-o"></i>
@@ -62,7 +62,7 @@ const Cart = ({
               </td>
               <td>
                 <button
-                  class="btn btn-danger btn-sm"
+                  className="btn btn-danger btn-sm"
                   onClick={() => removeAllFromCart(cart, item)}
                 >
                   Usuń
@@ -73,10 +73,10 @@ const Cart = ({
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan={6} class="py-2"></td>
+          <td colSpan={6} className="py-2"></td>
         </tr>
         <tr>
-          <td colSpan={4} class="text-right">
+          <td colSpan={4} className="text-right">
             {buttonSeen ? (
               <button className="btn btn-primary btn-lg">
                 <NavLink
