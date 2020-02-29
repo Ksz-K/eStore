@@ -5,7 +5,7 @@ import CheckoutForm from "./form";
 import axios from "axios";
 
 const submitOrder = async (values, cart) => {
-  const { email, name } = values.order;
+  const { email, name } = values;
 
   try {
     const config = {
