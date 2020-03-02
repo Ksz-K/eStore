@@ -29,7 +29,6 @@ const loadFromLocalStorage = () => {
 const middleware = [thunk];
 
 const recentVisitState = loadFromLocalStorage();
-console.log(recentVisitState);
 
 const rootReducer = combineReducers({
   cart: cartReducer,
