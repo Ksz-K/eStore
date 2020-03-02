@@ -5,6 +5,7 @@ import cartReducer from "./features/cart/duck/reducers";
 import productsReducer from "./features/product-listing/duck/reducers";
 import navReducer from "./pages/navigation/duck/reducers";
 import modalReducer from "./features/modal/duck/reducers";
+import orderReducer from "./features/order/duck/reducers";
 import { reducer as formReducer } from "redux-form";
 const saveToLocalStorage = state => {
   try {
@@ -35,7 +36,8 @@ const rootReducer = combineReducers({
   products: productsReducer,
   form: formReducer,
   nav: navReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  order: orderReducer
 });
 
 const store = createStore(

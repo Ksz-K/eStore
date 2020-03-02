@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import Cart from "../cart";
 import CheckoutForm from "./form";
+import { addOrder } from "../order/duck/actions";
 import axios from "axios";
 
-const submitOrder = async (values, cart) => {
+const submitOrder = async (values, cart, addOrder) => {
   const { email, name } = values;
 
   try {
@@ -31,15 +32,14 @@ const submitOrder = async (values, cart) => {
       formData,
       config
     );
-    document.location.href = `/orders/${res.data._id}`;
+    addOrder(res.data._id);
+    document.location.href = `/orders/confirmed`;
   } catch (err) {
     console.log(err);
   }
 };
 
-const Checkout = props => {
-  const { cart } = props;
-
+const Checkout = ({ addOrder, cart }) => {
   return (
     <div className="row justify-content-between">
       <div className="col-12 col-xl-8 border">
@@ -47,7 +47,9 @@ const Checkout = props => {
       </div>
 
       <div className="col-12 col-xl-4 border bg-bluesnow">
-        <CheckoutForm onSubmit={values => submitOrder(values, cart)} />
+        <CheckoutForm
+          onSubmit={values => submitOrder(values, cart, addOrder)}
+        />
       </div>
     </div>
   );
@@ -57,4 +59,4 @@ const mapStateToProps = state => ({
   cart: state.cart
 });
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, { addOrder })(Checkout);

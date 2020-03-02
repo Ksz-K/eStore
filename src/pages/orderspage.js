@@ -1,10 +1,10 @@
 import React from "react";
 import Order from "../features/order";
 
-const OrdersPage = props => {
+const OrdersPage = () => {
   return (
     <div>
-      <Order id={props.location.pathname.substring(8)} />
+      <Order />
     </div>
   );
 };

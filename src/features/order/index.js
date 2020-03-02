@@ -73,4 +73,7 @@ const Order = ({ id, cartHidden, clearCart }) => {
   );
 };
 
-export default connect(null, { cartHidden, clearCart })(Order);
+const mapStateToProps = state => ({
+  id: state.order[0]
+});
+export default connect(mapStateToProps, { cartHidden, clearCart })(Order);
