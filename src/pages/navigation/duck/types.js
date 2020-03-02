@@ -1,2 +1,4 @@
 export const SEARCH_VISIBLE = "SEARCH_VISIBLE";
 export const SEARCH_HIDDEN = "SEARCH_HIDDEN";
+export const CART_VISIBLE = "CART_VISIBLE";
+export const CART_HIDDEN = "CART_HIDDEN";

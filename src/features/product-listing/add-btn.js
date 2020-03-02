@@ -7,7 +7,9 @@ const AddButton = ({ cart, product, addToCart, cartItem }) => {
     <div
       className="m-0 p-0"
       style={{ fontSize: "0.9rem" }}
-      onClick={() => addToCart(cart, product)}
+      onClick={() => {
+        addToCart(cart, product);
+      }}
     >
       Do Koszyka {cartItem ? <span>({cartItem.quantity})</span> : ""}
     </div>

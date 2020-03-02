@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CatalogSearch from "../../features/product-listing/catalogsearch";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Navigation = ({ cart, searchSeen }) => (
+const Navigation = ({ cart, searchSeen, cartSeen }) => (
   <nav className="fixed-top navbar navbar-expand-lg navbar-light bg-light">
     <NavLink to="/" className="navbar-brand">
       <small>
@@ -40,46 +40,52 @@ const Navigation = ({ cart, searchSeen }) => (
             Kontakt
           </NavLink>
         </li>
-        <li className="nav-item d-lg-none">
-          <NavLink className="nav-link" to="/cart">
-            Koszyk (
-            {cart.reduce((acc, item) => {
-              return acc + item.quantity;
-            }, 0)}
-            )
-          </NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-block shopping-item">
-          <NavLink to="/cart">
-            &nbsp;Koszyk
-            <i className="fa fa-shopping-cart"></i>
-            {""}&nbsp;
-            <span className="product-count">
-              {cart.reduce((acc, item) => {
-                return acc + item.quantity;
-              }, 0)}
-            </span>
-          </NavLink>
-        </li>
-        <li className="nav-item d-lg-none">
-          <NavLink className="nav-link" to="/checkout">
-            Do kasy
-          </NavLink>
-        </li>
-        <li className="nav-item d-none d-lg-block shopping-item amount">
-          <NavLink to="/checkout">
-            &nbsp;Do kasy&nbsp;
-            <span className="badge badge-success">
-              {cart
-                .reduce((acc, item) => {
-                  return acc + item.quantity * item.price;
-                }, 0)
-                .toFixed(2)}
-              &nbsp;zł
-            </span>{" "}
-            &nbsp;
-          </NavLink>
-        </li>
+        {cartSeen ? (
+          <Fragment>
+            <li className="nav-item d-lg-none">
+              <NavLink className="nav-link" to="/cart">
+                Koszyk (
+                {cart.reduce((acc, item) => {
+                  return acc + item.quantity;
+                }, 0)}
+                )
+              </NavLink>
+            </li>
+            <li className="nav-item d-none d-lg-block shopping-item">
+              <NavLink to="/cart">
+                &nbsp;Koszyk
+                <i className="fa fa-shopping-cart"></i>
+                {""}&nbsp;
+                <span className="product-count">
+                  {cart.reduce((acc, item) => {
+                    return acc + item.quantity;
+                  }, 0)}
+                </span>
+              </NavLink>
+            </li>
+            <li className="nav-item d-lg-none">
+              <NavLink className="nav-link" to="/checkout">
+                Do kasy
+              </NavLink>
+            </li>
+            <li className="nav-item d-none d-lg-block shopping-item amount">
+              <NavLink to="/checkout">
+                &nbsp;Do kasy&nbsp;
+                <span className="badge badge-success">
+                  {cart
+                    .reduce((acc, item) => {
+                      return acc + item.quantity * item.price;
+                    }, 0)
+                    .toFixed(2)}
+                  &nbsp;zł
+                </span>{" "}
+                &nbsp;
+              </NavLink>
+            </li>
+          </Fragment>
+        ) : (
+          <Fragment></Fragment>
+        )}
       </ul>
       {searchSeen ? (
         <CatalogSearch />
@@ -90,16 +96,15 @@ const Navigation = ({ cart, searchSeen }) => (
           </NavLink>
         </div>
       )}
-      <form className="form-inline my-2 my-lg-0">
-        <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
-          Zaloguj
-        </button>
-      </form>
+      <div className="form-inline my-2 my-lg-0">
+        <button className="btn btn-outline-info my-2 my-sm-0">Zaloguj</button>
+      </div>
     </div>
   </nav>
 );
 
 const mapStateToProps = state => ({
-  searchSeen: state.nav.searchSeen
+  searchSeen: state.nav.searchSeen,
+  cartSeen: state.nav.cartSeen
 });
 export default connect(mapStateToProps)(Navigation);

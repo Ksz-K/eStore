@@ -14,8 +14,11 @@ const submitOrder = async (values, cart) => {
       }
     };
     const arrayCart = cart.map(item => ({
-      product_id: item.id,
-      qty: item.quantity
+      id: item.id,
+      quantity: item.quantity,
+      name: item.name,
+      description: item.description,
+      price: item.price
     }));
     const formData = {
       name,

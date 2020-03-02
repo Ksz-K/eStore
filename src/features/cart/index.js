@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import CutText from "../cuttext";
@@ -10,11 +10,16 @@ import {
 
 const Cart = ({
   cart,
+  cartFromOrder,
   addToCart,
   removeFromCart,
   removeAllFromCart,
-  buttonSeen
+  buttonSeen,
+  buttonSeen2
 }) => {
+  if (cartFromOrder !== undefined) {
+    cart = [...cartFromOrder];
+  }
   return (
     <table className="table-responsive">
       <thead>
@@ -37,7 +42,11 @@ const Cart = ({
               <td className="font-weight-bold">
                 {item.name}
                 <br />
-                <small>{CutText(item.description, 50)}</small>
+                {buttonSeen2 ? (
+                  <small>{CutText(item.description, 50)}</small>
+                ) : (
+                  ""
+                )}
               </td>
               <td className="text-center">{item.quantity}</td>
               <td className="text-center d-none d-md-table-cell">
@@ -46,28 +55,37 @@ const Cart = ({
               <td className="text-center">
                 {(item.quantity * item.price).toFixed(2)} zł
               </td>
-              <td>
-                <button
-                  className="btn btn-success btn-sm"
-                  onClick={() => addToCart(cart, item)}
-                >
-                  <i className="fa fa-plus-square-o"></i>
-                </button>
-                <button
-                  className="btn btn-warning btn-sm"
-                  onClick={() => removeFromCart(cart, item)}
-                >
-                  <i className="fa fa-minus-square-o"></i>
-                </button>
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => removeAllFromCart(cart, item)}
-                >
-                  Usuń
-                </button>
-              </td>
+              {buttonSeen2 ? (
+                <Fragment>
+                  <td>
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={() => addToCart(cart, item)}
+                    >
+                      <i className="fa fa-plus-square-o"></i>
+                    </button>
+                    <button
+                      className="btn btn-warning btn-sm"
+                      onClick={() => removeFromCart(cart, item)}
+                    >
+                      <i className="fa fa-minus-square-o"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => removeAllFromCart(cart, item)}
+                    >
+                      Usuń
+                    </button>{" "}
+                  </td>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <td></td>
+                  <td></td>
+                </Fragment>
+              )}
             </tr>
           ))}
       </tbody>
@@ -115,7 +133,8 @@ const Cart = ({
 };
 
 Cart.defaultProps = {
-  buttonSeen: true
+  buttonSeen: true,
+  buttonSeen2: true
 };
 const mapStateToProps = state => ({
   cart: state.cart

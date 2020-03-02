@@ -7,6 +7,7 @@ import OrdersPage from "./pages/orderspage";
 import NotFound from "./pages/notfound";
 import TermsOfUse from "./pages/termsofuse";
 import Contact from "./pages/contact";
+import Login from "./pages/login/index";
 import { Switch, Route } from "react-router-dom";
 
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path="/orders/:id" component={OrdersPage} />
       <Route path="/termsofuse" component={TermsOfUse} />
       <Route path="/contact" component={Contact} />
+      <Route path="/login" component={Login} />
       <Route component={NotFound} />
     </Switch>
   );

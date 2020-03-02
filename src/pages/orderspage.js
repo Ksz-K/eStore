@@ -4,7 +4,6 @@ import Order from "../features/order";
 const OrdersPage = props => {
   return (
     <div>
-      <h2>My order</h2>
       <Order id={props.match.params.id} />
     </div>
   );

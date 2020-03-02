@@ -1,6 +1,11 @@
-import { SEARCH_VISIBLE, SEARCH_HIDDEN } from "./types";
+import {
+  SEARCH_VISIBLE,
+  SEARCH_HIDDEN,
+  CART_VISIBLE,
+  CART_HIDDEN
+} from "./types";
 
-const initialState = { searchSeen: false };
+const initialState = { searchSeen: false, cartSeen: false };
 
 const navReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -16,6 +21,17 @@ const navReducer = (state = initialState, action) => {
       return {
         ...state,
         searchSeen: false
+      };
+    case CART_VISIBLE:
+      return {
+        ...state,
+        cartSeen: true
+      };
+
+    case CART_HIDDEN:
+      return {
+        ...state,
+        cartSeen: false
       };
 
     default:

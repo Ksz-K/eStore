@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../pages/spinner";
+import Cart from "../cart/";
+import { connect } from "react-redux";
+import { cartHidden } from "../../pages/navigation/duck/actions";
 
-const Order = ({ id }) => {
+const Order = ({ id, cartHidden }) => {
   const [orderNow, setOrderNow] = useState(null);
   const [stripe, setStripe] = useState(null);
   let stripeToken = "pk_test_jGqc0sLP1RHqR9fGWxQfWzx500EQw4g1w2";
 
   useEffect(() => {
+    cartHidden();
     if (window.Stripe) setStripe(window.Stripe(stripeToken));
   }, [stripeToken]);
 
@@ -26,8 +30,8 @@ const Order = ({ id }) => {
   const checkout = () => {
     stripe.redirectToCheckout({
       items: theCart.map(item => ({
-        quantity: item.qty * 1,
-        sku: `sku_${item.product_id}`
+        quantity: item.quantity * 1,
+        sku: `sku_${item.id}`
       })),
       successUrl: "https://okrzeszyn.waw.pl/",
       cancelUrl: "https://okrzeszyn.waw.pl/"
@@ -39,7 +43,9 @@ const Order = ({ id }) => {
   const { name, email, theCart } = orderNow.data;
   return (
     <div>
-      <h3>Twoje zamówienie</h3>
+      <h3>
+        Twoje zamówienie <span className="small font-italic">{id}</span>
+      </h3>
       <div>
         <span className="font-weight-bold">Name: </span> {name}
       </div>
@@ -56,9 +62,13 @@ const Order = ({ id }) => {
           Prosimy zanotować będzie potrzebny przy sprawdzeniu Statusu Zamówienia
         </small>
       </div>
-      <button onClick={checkout}>Płacę</button>
+      <Cart buttonSeen={false} buttonSeen2={false} cartFromOrder={theCart} />
+
+      <button className="btn btn-success" onClick={checkout}>
+        Płacę
+      </button>
     </div>
   );
 };
 
-export default Order;
+export default connect(null, { cartHidden })(Order);
