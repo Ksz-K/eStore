@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, formValueSelector } from "redux-form";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 const required = value => (value ? undefined : "Required");
@@ -262,9 +263,11 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
         </div>
 
         <div>
-          <button className="mt-2 btn btn-success btn-sm" type="submit">
-            Składam Zamówienie
-          </button>
+          <NavLink to="/orders" className="nav-link">
+            <button className="mt-2 btn btn-success btn-sm" type="submit">
+              Składam Zamówienie
+            </button>
+          </NavLink>
         </div>
       </form>
     </div>
