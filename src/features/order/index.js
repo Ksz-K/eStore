@@ -39,23 +39,24 @@ const Order = ({ id }) => {
   const { name, email, theCart } = orderNow.data;
   return (
     <div>
-      <h3>Order info</h3>
-      <div>Name: {name}</div>
-      <div>e-mail: {email} </div>
-      <h4>Items:</h4>
-      <ul>
-        {theCart &&
-          theCart.map(item => {
-            const { product_id, qty } = item;
-            return (
-              <div key={product_id}>
-                <li>Product: {product_id}</li>
-                <li>Quantity: {qty}</li>
-              </div>
-            );
-          })}
-      </ul>
-      <button onClick={checkout}>Do Kasy</button>
+      <h3>Twoje zamówienie</h3>
+      <div>
+        <span className="font-weight-bold">Name: </span> {name}
+      </div>
+      <div>
+        {" "}
+        <span className="font-weight-bold">e-mail: </span>
+        {email}
+      </div>
+      <div className="mb-4">
+        <span className="font-weight-bold">Numer zamówienia: </span>
+        {id}
+        <br />
+        <small className="font-italic">
+          Prosimy zanotować będzie potrzebny przy sprawdzeniu Statusu Zamówienia
+        </small>
+      </div>
+      <button onClick={checkout}>Płacę</button>
     </div>
   );
 };

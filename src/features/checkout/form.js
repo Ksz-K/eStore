@@ -3,6 +3,15 @@ import { connect } from "react-redux";
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import axios from "axios";
 
+const required = value => (value ? undefined : "Required");
+const email = value =>
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? "Invalid email address"
+    : undefined;
+const minLength = min => value =>
+  value && value.length < min ? `Must be ${min} characters` : undefined;
+const minLength2 = minLength(2);
+
 const initialValues = {
   country: "Polska"
 };
@@ -30,9 +39,12 @@ const voivodeships = [
 
 let CheckoutForm = ({ countryValue, handleSubmit }) => {
   const [listCountries, setListCountries] = useState(["Polska"]);
-  const [listCounties, setListCounties] = useState([]);
-  const [listCommunities, setListCommunities] = useState([]);
-  const [listPlaces, setListPlaces] = useState([]);
+
+  const [geoDetails, setGeoDetails] = useState({
+    counties: [],
+    communities: [],
+    places: []
+  });
 
   const loadCountries = async () => {
     try {
@@ -46,51 +58,34 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
     }
   };
 
-  const loadCounty = async voivodeship => {
-    if (voivodeship !== "") {
-      try {
-        const res = await axios.get(
-          `https://kszk-api.herokuapp.com/api/poland/voivodeship/${voivodeship}`
-        );
-        const list = res.data.Details;
-        setListCounties(list);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      setListCounties([]);
+  const loadGeo = async (areaGeo, areaName) => {
+    let geoList;
+    switch (areaGeo) {
+      case "voivodeship":
+        geoList = "counties";
+        break;
+      case "county":
+        geoList = "communities";
+        break;
+      case "community":
+        geoList = "places";
+        break;
+      default:
+        geoList = "dddddddd";
+        break;
     }
-  };
-
-  const loadCommunity = async county => {
-    if (county !== "") {
+    if (areaName !== "") {
       try {
         const res = await axios.get(
-          `https://kszk-api.herokuapp.com/api/poland/county/${county}`
+          `https://kszk-api.herokuapp.com/api/poland/${areaGeo}/${areaName}`
         );
         const list = res.data.Details;
-        setListCommunities(list);
+        setGeoDetails({ ...geoDetails, [geoList]: list });
       } catch (err) {
         console.log(err);
       }
     } else {
-      setListCommunities([]);
-    }
-  };
-
-  const loadPlace = async community => {
-    if (community !== "") {
-      try {
-        const res = await axios.get(
-          `https://kszk-api.herokuapp.com/api/poland/community/${community}`
-        );
-        const list = res.data.Details;
-        setListPlaces(list);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      setListPlaces([]);
+      setGeoDetails({ ...geoDetails, [geoList]: [] });
     }
   };
 
@@ -104,6 +99,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               name="name"
               component="input"
               type="text"
+              validate={[required, minLength2]}
               placeholder="First Name"
               onChange={() => loadCountries()}
             />
@@ -116,6 +112,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               name="lastName"
               component="input"
               type="text"
+              validate={[required, minLength2]}
               placeholder="Last Name"
             />
           </div>
@@ -128,6 +125,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               name="email"
               component="input"
               type="email"
+              validate={email}
               placeholder="e-mail"
             />
           </div>
@@ -151,7 +149,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               <label>Województwo</label>
               <div>
                 <Field
-                  onChange={e => loadCounty(e.target.value)}
+                  onChange={e => loadGeo(e.target.name, e.target.value)}
                   name="voivodeship"
                   component="select"
                 >
@@ -168,12 +166,12 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               <label>Powiat</label>
               <div>
                 <Field
-                  onChange={e => loadCommunity(e.target.value)}
+                  onChange={e => loadGeo(e.target.name, e.target.value)}
                   name="county"
                   component="select"
                 >
                   <option value="">Wybierz powiat...</option>
-                  {listCounties.map(county => (
+                  {geoDetails.counties.map(county => (
                     <option value={county} key={county}>
                       {county}
                     </option>
@@ -185,12 +183,12 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               <label>Gmina</label>
               <div>
                 <Field
-                  onChange={e => loadPlace(e.target.value)}
+                  onChange={e => loadGeo(e.target.name, e.target.value)}
                   name="community"
                   component="select"
                 >
                   <option value="">Wybierz gminę...</option>
-                  {listCommunities.map(community => (
+                  {geoDetails.communities.map(community => (
                     <option value={community} key={community}>
                       {community}
                     </option>
@@ -204,7 +202,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
               <div>
                 <Field name="place" component="select">
                   <option value="">Wybierz miejscowość...</option>
-                  {listPlaces.map(place => (
+                  {geoDetails.places.map(place => (
                     <option value={place} key={place}>
                       {place}
                     </option>
@@ -221,6 +219,7 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
                 name="foreignPlace"
                 component="input"
                 type="text"
+                validate={[required, minLength2]}
                 placeholder="Miejscowość"
               />
             </div>

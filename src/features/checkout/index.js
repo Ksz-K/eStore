@@ -54,7 +54,4 @@ const mapStateToProps = state => ({
   cart: state.cart
 });
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);
