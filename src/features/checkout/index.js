@@ -33,7 +33,7 @@ const submitOrder = async (values, cart, addOrder) => {
       config
     );
     addOrder(res.data._id);
-    document.location.href = `/orders/confirmed`;
+    document.location.href = `/orders/`;
   } catch (err) {
     console.log(err);
   }
