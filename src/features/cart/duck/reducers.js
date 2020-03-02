@@ -1,4 +1,4 @@
-import { ADD, REMOVE, REMOVE_ALL } from "./types";
+import { ADD, REMOVE, REMOVE_ALL, CLEAR } from "./types";
 
 const initialState = [];
 
@@ -14,6 +14,9 @@ const cartReducer = (state = initialState, action) => {
 
     case REMOVE_ALL:
       return [...payload];
+
+    case CLEAR:
+      return [];
 
     default:
       return state;

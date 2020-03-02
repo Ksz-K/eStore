@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { searchVisible } from "../pages/navigation/duck/actions";
+import { searchVisible, cartVisible } from "../pages/navigation/duck/actions";
 import StoreDashboard from "../features/product-listing/dashboard";
 import ProductListing from "../features/product-listing";
 
-const StorePage = ({ searchVisible }) => {
+const StorePage = ({ searchVisible, cartVisible }) => {
   useEffect(() => {
+    cartVisible();
     searchVisible();
   }, []);
 
@@ -17,4 +18,4 @@ const StorePage = ({ searchVisible }) => {
   );
 };
 
-export default connect(null, { searchVisible })(StorePage);
+export default connect(null, { searchVisible, cartVisible })(StorePage);

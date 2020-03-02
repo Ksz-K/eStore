@@ -97,7 +97,9 @@ const Navigation = ({ cart, searchSeen, cartSeen }) => (
         </div>
       )}
       <div className="form-inline my-2 my-lg-0">
-        <button className="btn btn-outline-info my-2 my-sm-0">Zaloguj</button>
+        <NavLink to="/login">
+          <button className="btn btn-outline-info my-2 my-sm-0">Zaloguj</button>
+        </NavLink>
       </div>
     </div>
   </nav>

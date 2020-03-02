@@ -262,7 +262,9 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
         </div>
 
         <div>
-          <button type="submit">Składam Zamówienie</button>
+          <button className="mt-2 btn btn-success btn-sm" type="submit">
+            Składam Zamówienie
+          </button>
         </div>
       </form>
     </div>

@@ -4,8 +4,9 @@ import Spinner from "../../pages/spinner";
 import Cart from "../cart/";
 import { connect } from "react-redux";
 import { cartHidden } from "../../pages/navigation/duck/actions";
+import { clearCart } from "../cart/duck/actions";
 
-const Order = ({ id, cartHidden }) => {
+const Order = ({ id, cartHidden, clearCart }) => {
   const [orderNow, setOrderNow] = useState(null);
   const [stripe, setStripe] = useState(null);
   let stripeToken = "pk_test_jGqc0sLP1RHqR9fGWxQfWzx500EQw4g1w2";
@@ -28,6 +29,7 @@ const Order = ({ id, cartHidden }) => {
   })();
 
   const checkout = () => {
+    clearCart();
     stripe.redirectToCheckout({
       items: theCart.map(item => ({
         quantity: item.quantity * 1,
@@ -71,4 +73,4 @@ const Order = ({ id, cartHidden }) => {
   );
 };
 
-export default connect(null, { cartHidden })(Order);
+export default connect(null, { cartHidden, clearCart })(Order);

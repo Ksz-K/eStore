@@ -1,4 +1,4 @@
-import { ADD, REMOVE, REMOVE_ALL } from "./types";
+import { ADD, REMOVE, REMOVE_ALL, CLEAR } from "./types";
 
 const cartWithoutItem = (cart, item) =>
   cart.filter(cartItem => cartItem.id !== item.id);
@@ -45,5 +45,12 @@ export const removeAllFromCart = (cart, item) => dispatch => {
   dispatch({
     type: REMOVE_ALL,
     payload
+  });
+};
+
+export const clearCart = () => dispatch => {
+  dispatch({
+    type: CLEAR,
+    payload: null
   });
 };
