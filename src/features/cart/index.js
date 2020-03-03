@@ -38,7 +38,7 @@ const Cart = ({
         {cart
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(item => (
-            <tr key={item.id}>
+            <tr key={item.name}>
               <td className="font-weight-bold">
                 {item.name}
                 <br />

@@ -7,29 +7,29 @@ import navReducer from "./pages/navigation/duck/reducers";
 import modalReducer from "./features/modal/duck/reducers";
 import orderReducer from "./features/order/duck/reducers";
 import { reducer as formReducer } from "redux-form";
-const saveToLocalStorage = state => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("state", serializedState);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const saveToLocalStorage = state => {
+//   try {
+//     const serializedState = JSON.stringify(state);
+//     localStorage.setItem("state", serializedState);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
-const loadFromLocalStorage = () => {
-  try {
-    const serializedState = localStorage.getItem("state");
-    if (serializedState === null) return undefined;
-    return JSON.parse(serializedState);
-  } catch (err) {
-    console.log(err);
-    return undefined;
-  }
-};
+// const loadFromLocalStorage = () => {
+//   try {
+//     const serializedState = localStorage.getItem("state");
+//     if (serializedState === null) return undefined;
+//     return JSON.parse(serializedState);
+//   } catch (err) {
+//     console.log(err);
+//     return undefined;
+//   }
+// };
 
 const middleware = [thunk];
 
-const recentVisitState = loadFromLocalStorage();
+//const recentVisitState = loadFromLocalStorage();
 
 const rootReducer = combineReducers({
   cart: cartReducer,
@@ -42,10 +42,10 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  recentVisitState,
+  // recentVisitState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+//store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;

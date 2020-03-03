@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, formValueSelector } from "redux-form";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 const required = value => (value ? undefined : "Required");
@@ -38,7 +38,7 @@ const voivodeships = [
   "świętokrzyskie"
 ];
 
-let CheckoutForm = ({ countryValue, handleSubmit }) => {
+let CheckoutForm = ({ countryValue, handleSubmit, history }) => {
   const [listCountries, setListCountries] = useState(["Polska"]);
 
   const [geoDetails, setGeoDetails] = useState({
@@ -263,11 +263,9 @@ let CheckoutForm = ({ countryValue, handleSubmit }) => {
         </div>
 
         <div>
-          <NavLink to="/orders" className="nav-link">
-            <button className="mt-2 btn btn-success btn-sm" type="submit">
-              Składam Zamówienie
-            </button>
-          </NavLink>
+          <button className="mt-2 btn btn-success btn-sm" type="submit">
+            Składam Zamówienie
+          </button>
         </div>
       </form>
     </div>

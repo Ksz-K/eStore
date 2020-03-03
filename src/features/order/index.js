@@ -12,11 +12,12 @@ const Order = ({ id, cartHidden, clearCart }) => {
   let stripeToken = "pk_test_jGqc0sLP1RHqR9fGWxQfWzx500EQw4g1w2";
 
   useEffect(() => {
+    confirmedCart();
     cartHidden();
     if (window.Stripe) setStripe(window.Stripe(stripeToken));
   }, [stripeToken]);
 
-  const confirmedCart = (async () => {
+  const confirmedCart = async () => {
     try {
       const orderSavedInDB = await axios.get(
         `https://kszk-api.herokuapp.com/api/products/${id}`
@@ -26,7 +27,7 @@ const Order = ({ id, cartHidden, clearCart }) => {
       console.log(err);
       setOrderNow({ name: "Wystąpił problem z dostępem do sieci..." });
     }
-  })();
+  };
 
   const checkout = () => {
     clearCart();
@@ -35,8 +36,8 @@ const Order = ({ id, cartHidden, clearCart }) => {
         quantity: item.quantity * 1,
         sku: `sku_${item.id}`
       })),
-      successUrl: "https://okrzeszyn.waw.pl/",
-      cancelUrl: "https://okrzeszyn.waw.pl/"
+      successUrl: "https://kszk-estore.netlify.com/",
+      cancelUrl: "https://kszk-estore.netlify.com/"
     });
   };
 
