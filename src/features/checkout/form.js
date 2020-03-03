@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, formValueSelector } from "redux-form";
-import { withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 const required = value => (value ? undefined : "Required");
@@ -38,8 +38,13 @@ const voivodeships = [
   "świętokrzyskie"
 ];
 
-let CheckoutForm = ({ countryValue, handleSubmit, history }) => {
+let CheckoutForm = ({ countryValue, handleSubmit, howManyOrdersInCache }) => {
   const [listCountries, setListCountries] = useState(["Polska"]);
+  const [oldOrdersInCache, setOldOrdersInCache] = useState(0);
+
+  useEffect(() => {
+    setOldOrdersInCache(howManyOrdersInCache);
+  }, []);
 
   const [geoDetails, setGeoDetails] = useState({
     counties: [],
@@ -263,11 +268,26 @@ let CheckoutForm = ({ countryValue, handleSubmit, history }) => {
         </div>
 
         <div>
-          <button className="mt-2 btn btn-success btn-sm" type="submit">
-            Składam Zamówienie
-          </button>
+          {!(howManyOrdersInCache - oldOrdersInCache) ? (
+            <button
+              onClick={console.log(howManyOrdersInCache - oldOrdersInCache)}
+              className="mt-2 btn btn-success btn-sm"
+              type="submit"
+            >
+              Składam Zamówienie
+            </button>
+          ) : null}
         </div>
       </form>
+      {howManyOrdersInCache - oldOrdersInCache ? (
+        <button className="btn outline-info">
+          <NavLink to="/orders" style={{ textDecoration: "none" }}>
+            {" "}
+            Płacę&nbsp;
+            <i className="fa fa-arrow-right"></i>
+          </NavLink>
+        </button>
+      ) : null}
     </div>
   );
 };
@@ -286,4 +306,7 @@ CheckoutForm = connect(state => {
   };
 })(CheckoutForm);
 
-export default CheckoutForm;
+const mapStateToProps = state => ({
+  howManyOrdersInCache: state.order.length
+});
+export default connect(mapStateToProps)(CheckoutForm);
