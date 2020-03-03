@@ -269,11 +269,7 @@ let CheckoutForm = ({ countryValue, handleSubmit, howManyOrdersInCache }) => {
 
         <div>
           {!(howManyOrdersInCache - oldOrdersInCache) ? (
-            <button
-              onClick={console.log(howManyOrdersInCache - oldOrdersInCache)}
-              className="mt-2 btn btn-success btn-sm"
-              type="submit"
-            >
+            <button className="mt-2 btn btn-success btn-sm" type="submit">
               Składam Zamówienie
             </button>
           ) : null}
