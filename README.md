@@ -8,7 +8,7 @@ In the project directory, after downloading the repository and unzipping it, you
 
 This repository contains Front-End part of the application that is built based on the full MERN stack.
 
-Hosted and running fron-end application can be found here:
+Hosted and running front-end application can be found here:
 https://kszk-estore.netlify.com/
 
 ### Back-end
